@@ -14,18 +14,18 @@
   }
 </script> -->
 
-<script lang="ts" setup name="Person234">
-  let name = "张三";
-  let age = 18;
+<script lang="ts" setup name="Person">
+  import { ref } from "vue"
+
+  let name = ref("张三")
+  let age = ref(18)
   let tel = "13888888888";
 
   function changeName() {
-    name = "zhang-san";
-    console.log(name);
+    name.value = "zhang-san"
   }
   function changeAge() {
-    age += 1;
-    console.log(age);
+    age.value   += 1;
   }
   function showTel() {
     alert(tel);
