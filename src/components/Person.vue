@@ -15,7 +15,7 @@
 </script> -->
 
 <script lang="ts" setup name="Person">
-  import { ref } from "vue"
+  import { ref } from 'vue'
 
   let name = ref("张三")
   let age = ref(18)
