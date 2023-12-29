@@ -1,35 +1,20 @@
 <template>
   <div class="person">
-    <h2>姓名：{{ name }}</h2>
-    <h2>年龄{{ age }}</h2>
-    <button @click="changeName">修改名字</button>
-    <button @click="changeAge">修改年龄</button>
-    <button @click="showTel">查看联系方式</button>
+    <h2>当前求和为：{{ sum }},放大10倍后：{{ bigSum }}</h2>
+    <button @click="add">点我sum+1</button>
+    <hr />
+    <img :src="dog" alt="" v-for="(dog, index) in dogList" :key="index" />
+    <br />
+    <button @click="getDog">再来一只小狗</button>
   </div>
 </template>
 
-<!-- <script lang="ts">
-  export default {
-    name: "Person",
-  }
-</script> -->
-
 <script lang="ts" setup name="Person">
-  import { ref } from 'vue'
+  import useSum from "@/hooks/useSum";
+  import useDog from "@/hooks/useDog";
 
-  let name = ref("张三")
-  let age = ref(18)
-  let tel = "13888888888";
-
-  function changeName() {
-    name.value = "zhang-san"
-  }
-  function changeAge() {
-    age.value   += 1;
-  }
-  function showTel() {
-    alert(tel);
-  }
+  const { sum, add, bigSum } = useSum();
+  const { dogList, getDog } = useDog();
 </script>
 
 <style scoped>
@@ -42,5 +27,14 @@
 
   button {
     margin: 0 5px;
+  }
+
+  li {
+    font-size: 20px;
+  }
+
+  img {
+    height: 100px;
+    margin-right: 10px;
   }
 </style>
